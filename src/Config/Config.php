@@ -28,7 +28,7 @@ class Config
         return $this;
     }
 
-    public function get(string $key, string $default = null): ?string
+    public function get(string $key, string $default = null)
     {
         if ($this->existsInCache($key)) {
             return $this->fromCache($key);
@@ -39,7 +39,7 @@ class Config
         return $this->addToCache($key, $extracted);
     }
 
-    private function extractFromConfig(string $key): ?string
+    private function extractFromConfig(string $key)
     {
         $filtered = $this->config;
 
@@ -67,7 +67,7 @@ class Config
         return isset($this->cache[$key]);
     }
 
-    private function fromCache(string $key): string
+    private function fromCache(string $key)
     {
         return $this->cache[$key];
     }
