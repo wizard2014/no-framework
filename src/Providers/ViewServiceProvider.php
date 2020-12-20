@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Views\View;
@@ -18,7 +20,7 @@ class ViewServiceProvider extends AbstractServiceProvider
         $container = $this->getContainer();
 
         $container->share(View::class, static function () {
-            $loader = new TwigLoader(__DIR__ . '/../../templates');
+            $loader = new TwigLoader(base_path('templates'));
 
             $twig = new TwigEnvironment($loader, [
                 'cache' => false,
