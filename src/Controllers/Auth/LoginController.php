@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Controllers\Auth;
 
 use App\Views\View;
 use Psr\Http\Message\ResponseInterface;
 
-class HomeController
+class LoginController
 {
     private $view;
 
@@ -18,10 +18,6 @@ class HomeController
 
     public function index(): ResponseInterface
     {
-        return $this->view->render('home.html.twig', [
-            'user' => [
-                'id' => 1,
-            ],
-        ]);
+        return $this->view->render('auth/login.html.twig');
     }
 }
