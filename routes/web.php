@@ -6,6 +6,7 @@ use League\Route\Router;
 
 $route->get('/', 'App\Controllers\HomeController::index')->setName('home');
 
-$route->group('/auth', static function () use ($route) {
-    $route->get('/auth/signin', 'App\Controllers\Auth\LoginController::index')->setName('auth.login');
+$route->group('/auth', static function ($route) {
+    $route->get('/signin', 'App\Controllers\Auth\LoginController::index')->setName('auth.login');
+    $route->post('/signin', 'App\Controllers\Auth\LoginController::signin');
 });
