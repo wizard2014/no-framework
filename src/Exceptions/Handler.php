@@ -4,19 +4,27 @@ declare(strict_types=1);
 
 namespace App\Exceptions;
 
+use App\Session\SessionStoreInterface;
 use Exception;
+use Laminas\Diactoros\Response\RedirectResponse;
 use ReflectionClass;
 use function method_exists;
 
 class Handler
 {
     private $exception;
+    private $session;
 
-    public function __construct(Exception $exception)
+    public function __construct(Exception $exception, SessionStoreInterface $session)
     {
         $this->exception = $exception;
+        $this->session = $session;
     }
 
+    /**
+     * @return mixed
+     * @throws Exception
+     */
     public function respond()
     {
         $class = (new ReflectionClass($this->exception))->getShortName();
@@ -28,9 +36,12 @@ class Handler
         return $this->{$method}($this->exception);
     }
 
-    private function handleValidationException(Exception $e)
+    private function handleValidationException(Exception $e): RedirectResponse
     {
-        // session set
+        $this->session->set([
+            'errors' => $e->getErrors(),
+            'old' => $e->getOldInput(),
+        ]);
 
         return redirect($e->getPath());
     }

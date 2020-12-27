@@ -8,5 +8,11 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         App\Providers\DatabaseServiceProvider::class,
+        App\Providers\SessionServiceProvider::class,
+    ],
+
+    'middleware' => [
+        App\Middleware\ShareValidationErrors::class,
+        App\Middleware\ClearValidationErrors::class,
     ],
 ];

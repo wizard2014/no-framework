@@ -17,12 +17,16 @@ require_once __DIR__ . '/container.php';
 
 $route = $container->get(League\Route\Router::class);
 
+require_once __DIR__ . '/../bootstrap/middleware.php';
 require_once __DIR__ . '/../routes/web.php';
 
 try {
     $response = $route->dispatch($container->get('request'));
 } catch (Exception $e) {
-    $handler = new App\Exceptions\Handler($e);
+    $handler = new App\Exceptions\Handler(
+        $e,
+        $container->get(App\Session\SessionStoreInterface::class)
+    );
 
     $response = $handler->respond();
 }
