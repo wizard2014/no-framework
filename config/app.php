@@ -9,12 +9,14 @@ return [
         App\Providers\ViewServiceProvider::class,
         App\Providers\DatabaseServiceProvider::class,
         App\Providers\SessionServiceProvider::class,
-        App\Providers\ViewShareServiceProvider::class,
         App\Providers\HashServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        App\Providers\ViewShareServiceProvider::class,
     ],
 
     'middleware' => [
         App\Middleware\ShareValidationErrors::class,
         App\Middleware\ClearValidationErrors::class,
+        App\Middleware\Authenticate::class,
     ],
 ];

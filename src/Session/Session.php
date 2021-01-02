@@ -17,7 +17,7 @@ class Session implements SessionStoreInterface
         return $default;
     }
 
-    public function set($key, string $value = null): void
+    public function set($key, $value = null): void
     {
         if (is_array($key)) {
             foreach ($key as $sessionKey => $sessionValue) {
