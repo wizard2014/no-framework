@@ -24,6 +24,11 @@ class Auth
         $this->session = $session;
     }
 
+    public function logout(): void
+    {
+        $this->session->clear($this->key());
+    }
+
     public function attempt(string $username, string $password): bool
     {
         $user = $this->getByUsername($username);

@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Session\Session;
+use App\Session\Flash;
 use App\Session\SessionStoreInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
-class SessionServiceProvider extends AbstractServiceProvider
+class FlashServiceProvider extends AbstractServiceProvider
 {
     protected $provides = [
-        SessionStoreInterface::class,
+        Flash::class,
     ];
 
     public function register(): void
     {
         $container = $this->getContainer();
 
-        $container->share(SessionStoreInterface::class, static function () {
-            return new Session();
+        $container->share(Flash::class, static function () use ($container) {
+            return new Flash(
+                $container->get(SessionStoreInterface::class)
+            );
         });
     }
 }

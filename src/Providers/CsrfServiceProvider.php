@@ -4,22 +4,24 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
-use App\Session\Session;
+use App\Security\Csrf;
 use App\Session\SessionStoreInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 
-class SessionServiceProvider extends AbstractServiceProvider
+class CsrfServiceProvider extends AbstractServiceProvider
 {
     protected $provides = [
-        SessionStoreInterface::class,
+        Csrf::class,
     ];
 
     public function register(): void
     {
         $container = $this->getContainer();
 
-        $container->share(SessionStoreInterface::class, static function () {
-            return new Session();
+        $container->share(Csrf::class, static function () use ($container) {
+            return new Csrf(
+                $container->get(SessionStoreInterface::class)
+            );
         });
     }
 }

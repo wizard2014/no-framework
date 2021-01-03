@@ -11,6 +11,8 @@ return [
         App\Providers\SessionServiceProvider::class,
         App\Providers\HashServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\FlashServiceProvider::class,
+        App\Providers\CsrfServiceProvider::class,
         App\Providers\ViewShareServiceProvider::class,
     ],
 
@@ -18,5 +20,6 @@ return [
         App\Middleware\ShareValidationErrors::class,
         App\Middleware\ClearValidationErrors::class,
         App\Middleware\Authenticate::class,
+        App\Middleware\CsrfGuard::class,
     ],
 ];
