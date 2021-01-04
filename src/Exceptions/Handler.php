@@ -11,6 +11,7 @@ use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ResponseInterface;
 use ReflectionClass;
 use function method_exists;
+use function redirect;
 
 class Handler
 {

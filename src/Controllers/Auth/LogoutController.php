@@ -7,6 +7,7 @@ namespace App\Controllers\Auth;
 use App\Auth\Auth;
 use App\Controllers\Controller;
 use Psr\Http\Message\ResponseInterface;
+use function redirect;
 
 class LogoutController extends Controller
 {

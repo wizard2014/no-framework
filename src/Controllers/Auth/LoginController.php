@@ -11,6 +11,7 @@ use App\Views\View;
 use League\Route\Router;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use function redirect;
 
 class LoginController extends Controller
 {
