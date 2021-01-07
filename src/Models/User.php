@@ -96,7 +96,7 @@ class User
         return $this->rememberToken;
     }
 
-    public function setRememberToken(string $rememberToken): self
+    public function setRememberToken(?string $rememberToken): self
     {
         $this->rememberToken = $rememberToken;
 
@@ -108,7 +108,7 @@ class User
         return $this->rememberIdentifier;
     }
 
-    public function setRememberIdentifier(string $rememberIdentifier): self
+    public function setRememberIdentifier(?string $rememberIdentifier): self
     {
         $this->rememberIdentifier = $rememberIdentifier;
 

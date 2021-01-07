@@ -14,6 +14,7 @@ return [
         App\Providers\FlashServiceProvider::class,
         App\Providers\CsrfServiceProvider::class,
         App\Providers\ValidationServiceProvider::class,
+        App\Providers\CookiesServiceProvider::class,
         App\Providers\ViewShareServiceProvider::class,
     ],
 
@@ -21,6 +22,7 @@ return [
         App\Middleware\ShareValidationErrors::class,
         App\Middleware\ClearValidationErrors::class,
         App\Middleware\Authenticate::class,
+        App\Middleware\AuthenticateFromCookies::class,
         App\Middleware\CsrfGuard::class,
     ],
 ];
